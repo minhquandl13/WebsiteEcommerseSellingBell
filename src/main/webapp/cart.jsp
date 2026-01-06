@@ -1,7 +1,11 @@
+<%@ page import="Model.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="Model.ShoppingCart" %>
 <%@ page import="Model.CartItems" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page import="Service.ProductService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>

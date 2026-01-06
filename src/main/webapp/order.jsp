@@ -6,7 +6,9 @@
 <%@ page import="Model.Account" %>
 <%@ page import="DAO.OrderDAO" %>
 <%@ page import="Service.ProductService" %>
+<%@ page import="Model.Voucher" %>
 <%@ page import="com.google.gson.Gson" %>
+<%@ page import="Service.VoucherService" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
@@ -240,48 +242,48 @@
         </div>
     </div>
 </div>
-<%--<div class="modal fade" id="voucherModal" tabindex="-1" role="dialog" aria-labelledby="voucherModalLabel" aria-hidden="true">--%>
-<%--    <div class="modal-dialog" role="document">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h5 class="modal-title" id="voucherModalLabel">Voucher List</h5>--%>
-<%--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                    <span aria-hidden="true">&times;</span>--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                <form id="voucherForm" action="./voucher" method="post">--%>
-<%--                        <%--%>
-<%--                        List<Voucher> voucherList = (List<Voucher>) VoucherService.getInstance().getVouchers();--%>
-<%--                        if (voucherList == null || voucherList.isEmpty()) {--%>
-<%--                            System.out.println("Null");--%>
-<%--                    %>--%>
-<%--                    <p>No vouchers available</p>--%>
-<%--                        <%--%>
-<%--                    } else {--%>
-<%--                        for (Voucher voucher : voucherList) {--%>
-<%--                    %>--%>
-<%--                    <div class="voucher-item">--%>
-<%--                        <input type="radio" name="selectedVoucher" value="<%= voucher.getId() %>">--%>
-<%--                        <span class="voucherName"><%= voucher.getName() %></span>--%>
-<%--                        <p>Start Date: <%= voucher.getDateStart() %></p>--%>
-<%--                        <p>End Date: <%= voucher.getDateEnd() %></p>--%>
-<%--                        <p>Discount: <%= voucher.getDiscount() %></p>--%>
-<%--                    </div>--%>
-<%--                        <%--%>
-<%--                            }--%>
-<%--                        }--%>
-<%--                    %>--%>
+<div class="modal fade" id="voucherModal" tabindex="-1" role="dialog" aria-labelledby="voucherModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="voucherModalLabel">Voucher List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="voucherForm" action="./voucher" method="post">
+                        <%
+                        List<Voucher> voucherList = (List<Voucher>) VoucherService.getInstance().getVouchers();
+                        if (voucherList == null || voucherList.isEmpty()) {
+                            System.out.println("Null");
+                    %>
+                    <p>No vouchers available</p>
+                        <%
+                    } else {
+                        for (Voucher voucher : voucherList) {
+                    %>
+                    <div class="voucher-item">
+                        <input type="radio" name="selectedVoucher" value="<%= voucher.getId() %>">
+                        <span class="voucherName"><%= voucher.getName() %></span>
+                        <p>Start Date: <%= voucher.getDateStart() %></p>
+                        <p>End Date: <%= voucher.getDateEnd() %></p>
+                        <p>Discount: <%= voucher.getDiscount() %></p>
+                    </div>
+                        <%
+                            }
+                        }
+                    %>
 
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
-<%--                <button type="submit" class="btn btn-primary" onclick="applyVoucher()">Apply Voucher</button>--%>
-<%--            </div>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" onclick="applyVoucher()">Apply Voucher</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
 
     $(document).ready(function(){
